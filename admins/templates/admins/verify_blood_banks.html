@@ -1,0 +1,53 @@
+{% extends 'admins/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+
+{% block main %}
+
+
+
+    {% for blood_bank in blood_banks %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">{{blood_bank.blood_bank_name}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">{{blood_bank.address}}</div>
+                <div class="col-md-3">{{blood_bank.area}}</div>
+                <div class="col-md-3">{{blood_bank.state}}</div>
+                <div class="col-md-3">{{blood_bank.city}} - {{blood_bank.zipcode}}</div>
+                <div class="col-md-3">{{blood_bank.country}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{blood_bank.contact_email_address}}</div>
+                <div class="col-md-4">{{blood_bank.contact_mobile_number}}</div>
+                <div class="col-md-4">{{blood_bank.website_url}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><a href="{{blood_bank.logo.url}}" target="_blank">Logo</a></div>
+                <div class="col-md-4"><a href="{{blood_bank.bloodbank_operating_license_certificate.url}}" target="_blank">Bloodbank Operating License Certificate</a></div>
+                <div class="col-md-4"><a href="{{blood_bank.certificate_of_accreditation.url}}" target="_blank">Certificate of Accreditation</a></div>
+            </div>
+            {% if blood_bank.is_blood_bank_verified %}
+            <div>
+                Blood Bank Verified!!!
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'verify_blood_bank' blood_bank_id=blood_bank.user.user_id %}" class="btn btn-block">Verify Blood bank</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

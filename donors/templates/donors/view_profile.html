@@ -1,0 +1,42 @@
+{% extends 'donors/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'edit_donor_profile' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Edit Profile</a>
+</div>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{profile.profile_pic.url}}" width="350px">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5>Full Name : {{profile.full_name}}</h5>
+            <p class="card-text">Date Of birth : {{profile.dob}}</p>
+            <p class="card-text">Gender : {{profile.gender}}</p>
+            <p class="card-text">Blood Group : {{profile.blood_group}}</p>
+            <p class="card-text">Address : {{profile.address}}</p>
+            <p class="card-text">Address : {{profile.area}}</p>
+            <p class="card-text">{{profile.city}}</p>
+            <p class="card-text">{{profile.state}} {{profile.country}} {{profile.zipcode}}</p>
+        <p class="card-text">{{profile.contact_email_address}}<br>{{profile.contact_mobile_number}}</p>
+        <p class="card-text">First Donation Date : {{profile.first_donation_date}}</p>
+        <p class="card-text">Last Donation Date : {{profile.last_donation_date}}</p>
+        <p class="card-text">Number Of Donations : {{profile.number_of_donations}}</p>
+        <p class="card-text">Total Blood Quantity Donated : {{profile.blood_donated_in_cc}}</p>
+        <p class="card-text">Last Blood Donation Type : {{profile.last_donation_type}}</p>
+        </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

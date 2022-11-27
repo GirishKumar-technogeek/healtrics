@@ -1,0 +1,27 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="card-body">
+            <p class="card-text">A+ ->  {{blood_bank_inventory.a_plus_in_cc}}</p>
+            <p class="card-text">A- -> {{blood_bank_inventory.a_minus_in_cc}}</p>
+            <p class="card-text">B+ ->  {{blood_bank_inventory.b_plus_in_cc}}</p>
+            <p class="card-text">B- -> {{blood_bank_inventory.b_minus_in_cc}}</p>
+            <p class="card-text">O+ ->  {{blood_bank_inventory.o_plus_in_cc}}</p>
+            <p class="card-text">O- -> {{blood_bank_inventory.o_minus_in_cc}}</p>
+            <p class="card-text">AB+ ->  {{blood_bank_inventory.ab_plus_in_cc}}</p>
+            <p class="card-text">AB- ->  {{blood_bank_inventory.ab_minus_in_cc}}</p>
+        </div>    
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

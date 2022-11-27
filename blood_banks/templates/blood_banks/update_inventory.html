@@ -1,0 +1,73 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block"><img src="https://www.pngitem.com/pimgs/m/266-2666963_medical-symbol-hd-png-download.png" width="100%" height="100%"></div>
+                <div class="col-lg-7">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Update Inventory</h1>
+                        </div>
+                        <form class="user" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                A+<br>
+                                <input type="number" class="form-control form-control-user" id="a_plus_in_cc" name="a_plus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                A-<br>
+                                <input type="number" class="form-control form-control-user" id="a_minus_in_cc" name="a_minus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                B+<br>
+                                <input type="number" class="form-control form-control-user" id="b_plus_in_cc" name="b_plus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                B-<br>
+                                <input type="number" class="form-control form-control-user" id="b_minus_in_cc" name="b_minus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                O+<br>
+                                <input type="number" class="form-control form-control-user" id="o_plus_in_cc" name="o_plus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                O-<br>
+                                <input type="number" class="form-control form-control-user" id="o_minus_in_cc" name="o_minus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                AB+<br>
+                                <input type="number" class="form-control form-control-user" id="ab_plus_in_cc" name="ab_plus_in_cc">
+                            </div>
+                            <div class="form-group">
+                                AB-<br>
+                                <input type="number" class="form-control form-control-user" id="ab_minus_in_cc" name="ab_minus_in_cc">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Update
+                            </button>
+                            <hr>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+<script>
+    document.getElementById('a_plus_in_cc').value = "{{inventory.a_plus_in_cc}}";
+    document.getElementById('a_minus_in_cc').value = "{{inventory.a_minus_in_cc}}";
+    document.getElementById('b_plus_in_cc').value = "{{inventory.b_plus_in_cc}}";
+    document.getElementById('b_minus_in_cc').value = "{{inventory.b_minus_in_cc}}";
+    document.getElementById('o_plus_in_cc').value = "{{inventory.o_plus_in_cc}}";
+    document.getElementById('o_minus_in_cc').value = "{{inventory.o_minus_in_cc}}";
+    document.getElementById('ab_plus_in_cc').value = "{{inventory.ab_plus_in_cc}}";
+    document.getElementById('ab_minus_in_cc').value = "{{inventory.ab_minus_in_cc}}";
+</script>
+{% endblock %}

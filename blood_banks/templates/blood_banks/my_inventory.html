@@ -1,0 +1,30 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'update_inventory' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Update Inventory</a>
+</div>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="card-body">
+            <p class="card-text">A+ ->  {{inventory.a_plus_in_cc}}</p>
+            <p class="card-text">A- -> {{inventory.a_minus_in_cc}}</p>
+            <p class="card-text">B+ ->  {{inventory.b_plus_in_cc}}</p>
+            <p class="card-text">B- -> {{inventory.b_minus_in_cc}}</p>
+            <p class="card-text">O+ ->  {{inventory.o_plus_in_cc}}</p>
+            <p class="card-text">O- -> {{inventory.o_minus_in_cc}}</p>
+            <p class="card-text">AB+ ->  {{inventory.ab_plus_in_cc}}</p>
+            <p class="card-text">AB- ->  {{inventory.ab_minus_in_cc}}</p>
+        </div>    
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

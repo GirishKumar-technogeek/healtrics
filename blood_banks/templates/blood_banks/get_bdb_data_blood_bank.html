@@ -1,0 +1,27 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="card-body">
+            <p class="card-text">Request Id : {{response.donation.request_id}}</p>
+            <p class="card-text">Donor Type : {{response.donation.donor_type}}</p>
+            <p class="card-text">Blood Bank Id : {{response.donation.blood_bank_id}}</p>
+            <p class="card-text">Donor Id : {{response.donation.donor_id}}</p>
+            <p class="card-text">Donation Date Time : {{response.donation.donation_date_time}}</p>
+            <p class="card-text">Donation Type : {{response.donation.donation_type}}</p>
+            <p class="card-text">Blood Type : {{response.donation.blood_type}}</p>
+            <p class="card-text">Donated Quantity : {{response.donation.donated_quantity}}</p>
+        </div>    
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

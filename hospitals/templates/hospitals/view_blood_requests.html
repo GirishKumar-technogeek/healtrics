@@ -1,0 +1,44 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+    {% for blood_request in blood_requests %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Request Id - {{blood_request.request_id}} {{blood_request.request_date_time}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">Donation Type Needed : {{blood_request.donation_type_needed}}</div>
+                <div class="col-md-4">Blood Type Needed : {{blood_request.blood_type_needed}}</div>
+                <div class="col-md-4">Quantity Needed : {{blood_request.quantity_needed}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">Request Description : {{blood_request.request_description}}</div>
+                <div class="col-md-4">Donation Uses : {{blood_request.donation_uses}}</div>
+                <div class="col-md-4">Approx Time For Donation : {{blood_request.approx_time_for_donating}}</div>
+            </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <a href="{% url 'view_requested_donors' request_id=blood_request.request_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Requested Donors</a>
+            </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <a href="{% url 'view_requested_blood_banks' request_id=blood_request.request_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Requested Blood Banks</a>
+            </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <a href="{% url 'view_accepted_donors' request_id=blood_request.request_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Accepted Donors</a>
+            </div>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <a href="{% url 'view_accepted_blood_banks' request_id=blood_request.request_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Accepted Blood Banks</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}   
+
+{% block js %}
+
+{% endblock %}   

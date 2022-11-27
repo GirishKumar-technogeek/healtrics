@@ -1,0 +1,66 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Edit BloodBank</h1>
+</div>
+<form class="user" action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="blood_bank_name" name="blood_bank_name" placeholder="Blood Bank Name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="address" name="address" placeholder="Address">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="area" name="area" placeholder="Area">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="city" name="city" placeholder="City">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="state" name="state" placeholder="State">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="country" name="country" placeholder="Country">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="zipcode" name="zipcode" placeholder="Zipcode">
+    </div>                                    
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="email" class="form-control form-control-user" id="contact_email_address" name="contact_email_address" placeholder="Contact Email Address">
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user" id="contact_mobile_number" name="contact_mobile_number" placeholder="Contact Mobile Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="website_url" name="website_url" placeholder="Website Url">
+    </div>
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        Edit BloodBank
+    </button>
+    <hr>
+</form>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById('blood_bank_name').value = "{{blood_bank.blood_bank_name}}";
+document.getElementById('address').value = "{{blood_bank.address}}";
+document.getElementById('area').value = "{{blood_bank.area}}";
+document.getElementById('city').value = "{{blood_bank.city}}";
+document.getElementById('state').value = "{{blood_bank.state}}";
+document.getElementById('country').value = "{{blood_bank.country}}";
+document.getElementById('zipcode').value = "{{blood_bank.zipcode}}";
+document.getElementById('contact_email_address').value = "{{blood_bank.contact_email_address}}";
+document.getElementById('contact_mobile_number').value = "{{blood_bank.contact_mobile_number}}";
+document.getElementById('website_url').value = "{{blood_bank.website_url}}";
+</script>
+{% endblock %}

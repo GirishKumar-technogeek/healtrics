@@ -1,0 +1,40 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'edit_blood_bank_profile' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Edit Profile</a>
+</div>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{blood_bank.logo.url}}" width="350px">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5>{{blood_bank.blood_bank_name}}</h5>
+            <p class="card-text">{{blood_bank.address}}</p>
+            <p class="card-text">{{blood_bank.area}}</p>
+            <p class="card-text">{{blood_bank.city}}</p>
+            <p class="card-text">{{blood_bank.state}} {{blood_bank.country}} {{blood_bank.zipcode}}</p>
+        <p class="card-text">{{blood_bank.contact_email_address}}<br>{{blood_bank.contact_mobile_number}}</p>
+        <p class="card-text">{{blood_bank.website_url}}</p>
+        {% if blood_bank.is_blood_bank_verified %}
+        <p class="card-text">BloodBank Verified!!!</p>
+        {% else %}  
+        <p class="card-text">BloodBank Not Verified!!!</p>
+        {% endif %}
+        </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

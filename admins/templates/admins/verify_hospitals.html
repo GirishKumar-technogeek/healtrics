@@ -1,0 +1,56 @@
+{% extends 'admins/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+
+{% block main %}
+
+    {% for hospital in hospitals %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">{{hospital.hospital_name}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">{{hospital.address}}</div>
+                <div class="col-md-3">{{hospital.area}}</div>
+                <div class="col-md-3">{{hospital.state}}</div>
+                <div class="col-md-3">{{hospital.city}} - {{hospital.zipcode}}</div>
+                <div class="col-md-3">{{hospital.country}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">{{hospital.contact_email_address}}</div>
+                <div class="col-md-4">{{hospital.contact_mobile_number}}</div>
+                <div class="col-md-4">{{hospital.website_url}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><a href="{{hospital.logo.url}}" target="_blank">Logo</a></div>
+                <div class="col-md-4"><a href="{{hospital.clinic_establishment_certificate.url}}" target="_blank">Clinic Establishment Certificate</a></div>
+                <div class="col-md-4"><a href="{{hospital.companies_registration_act_certificate.url}}" target="_blank">Registration Certificate</a></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"><a href="{{hospital.societies_registration_act_certificate.url}}" target="_blank">Societies Registration Act Certificate</a></div>
+                <div class="col-md-4"><a href="{{hospital.bloodbank_operating_license_certificate.url}}" target="_blank">Bloodbank Operating License Certificate</a></div>
+                <div class="col-md-4"><a href="{{hospital.certificate_of_accreditation.url}}" target="_blank">Certificate of Accreditation</a></div>
+            </div>
+            {% if hospital.is_hospital_verified %}
+            <div>
+                Hospital Verified!!!
+            </div>
+            {% else %}
+            <div>
+                <a href="{% url 'verify_hospital' hospital_id=hospital.user.user_id %}" class="btn btn-block">Verify Hospital</a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

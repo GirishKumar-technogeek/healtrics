@@ -1,0 +1,84 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock %}   
+
+{% block main %}
+    {% for brd in blood_request_blood_banks %}
+        <nav>
+            <div class="nav nav-tabs" role="tablist">
+              <a class="nav-item nav-link active" id="nav-request-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" data-toggle="tab" href="#nav-request-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tab" aria-controls="nav-request-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" aria-selected="true">Request Info</a>
+              <a class="nav-item nav-link" id="nav-donor-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" data-toggle="tab" href="#nav-donor-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tab" aria-controls="nav-donor-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" aria-selected="false">Blood Bank Info</a>
+              <a class="nav-item nav-link" id="nav-donated-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" data-toggle="tab" href="#nav-donated-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tab" aria-controls="nav-donated-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" aria-selected="false">Donated Info</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-request-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tabpanel" aria-labelledby="nav-request-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6>Request Id - {{brd.blood_request.request_id}} {{brd.blood_request.request_date_time}}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">Donation Type Needed : {{brd.blood_request.donation_type_needed}}</div>
+                        <div class="col-md-4">Blood Type Needed : {{brd.blood_request.blood_type_needed}}</div>
+                        <div class="col-md-4">Quantity Needed : {{brd.blood_request.quantity_needed}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">Request Description : {{brd.blood_request.request_description}}</div>
+                        <div class="col-md-4">Donation Uses : {{brd.blood_request.donation_uses}}</div>
+                        <div class="col-md-4">Approx Time For Donation : {{brd.blood_request.approx_time_for_donating}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-donor-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tabpanel" aria-labelledby="nav-donor-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}">
+            <div class="card mb-3" style="max-width: 100%;">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="{{brd.blood_bank_profile.logo.url}}" width="350px">
+                    </div>
+                    <div class="col-md-8">
+                    <div class="card-body">
+                        <h5>{{brd.blood_bank_profile.blood_bank_name}}</h5>
+                        <p class="card-text">{{brd.blood_bank_profile.address}}</p>
+                        <p class="card-text">{{brd.blood_bank_profile.city}}</p>
+                        <p class="card-text">{{brd.blood_bank_profile.state}} {{brd.blood_bank_profile.country}} {{brd.blood_bank_profile.zipcode}}</p>
+                    <p class="card-text">{{brd.blood_bank_profile.contact_email_address}}<br>{{brd.blood_bank_profile.contact_mobile_number}}</p>
+                    <p class="card-text">{{brd.blood_bank_profile.website_url}}</p>
+                    </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="{% url 'view_accepted_blood_bank_inventory' blood_bank_id=brd.blood_bank_profile.user.user_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Inventory</a>
+                    </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-donated-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}" role="tabpanel" aria-labelledby="nav-donated-tab-{{brd.blood_request.request_id}}-{{brd.blood_bank_profile.user.user_id}}">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6>Request Id - {{brd.blood_request.request_id}} {{brd.blood_request.request_date_time}}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">Request Status : {{brd.request_status}}</div>
+                        <div class="col-md-3">Blood Bank Accepted Date Time : {{brd.blood_bank_accepted_date_time}}</div>
+                        <div class="col-md-3">Blood Bank Donated Date Time : {{brd.donation_date_time}}</div>
+                        <div class="col-md-3">Collected Quatity : {{brd.collected_quantity_in_cc}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    {% endfor %}
+{% endblock %}   
+
+{% block js %}
+
+{% endblock %}

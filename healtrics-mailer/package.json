@@ -1,0 +1,16 @@
+{
+  "name": "healtrics-mailer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "fast-two-sms": "^3.0.0",
+    "nodemailer": "^6.8.0"
+  }
+}

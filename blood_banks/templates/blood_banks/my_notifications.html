@@ -1,0 +1,19 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block main %}
+
+    {% for not in nots %}
+        <p>{{not.message}}</p>
+        <p>{{not.added_date_time}}</p>
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

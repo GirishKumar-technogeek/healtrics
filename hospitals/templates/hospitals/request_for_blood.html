@@ -1,0 +1,60 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <div class="row">
+            <div class="col-lg-5 d-none d-lg-block"><img src="https://www.pngitem.com/pimgs/m/266-2666963_medical-symbol-hd-png-download.png" width="100%" height="100%"></div>
+            <div class="col-lg-7 container">
+                    <div class="text-center">
+                        <br>
+                        <h1 class="h4 text-gray-900 mb-4">Request For Blood</h1>
+                    </div>
+                    <form class="user" action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <input type="text" class="form-control form-control-user" name="request_description" placeholder="Request Description">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="donation_type_needed">
+                                <option value="Whole Blood">Whole Blood</option>
+                                <option value="Red Cells">Red Cells</option>
+                                <option value="Platelets">Platelets</option>
+                                <option value="Plasma">Plasma</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control" name="blood_type_needed">
+                                <option value="A+">A+</option>
+                                <option value="A-">A-</option>
+                                <option value="B+">B+</option>
+                                <option value="B-">B-</option>
+                                <option value="O+">O+</option>
+                                <option value="O-">O-</option>
+                                <option value="AB+">AB+</option>
+                                <option value="AB-">AB-</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            Quantity Needed (in c.c)
+                            <input type="number" class="form-control form-control-user" name="quantity_needed">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                            Request Blood
+                        </button>
+                        <hr>
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}  
+
+{% block js %}
+
+{% endblock %}

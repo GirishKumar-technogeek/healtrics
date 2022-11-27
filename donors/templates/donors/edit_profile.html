@@ -1,0 +1,88 @@
+{% extends 'donors/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Edit Donor Profile</h1>
+</div>
+<form class="user" action="" method="post">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="full_name" name="full_name" placeholder="Full Name">
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="gender" name="gender">
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Others">Others</option>
+        </select>
+    </div>
+    <div class="form-group">
+        Date Of Birth
+        <input type="date" class="form-control" id="dob" name="dob">
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="blood_group" name="blood_group">
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="address" name="address" placeholder="Address">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="area" name="area" placeholder="Area">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="city" name="city" placeholder="City">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="state" placeholder="State">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="country" name="country" placeholder="Country">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" id="zipcode" name="zipcode" placeholder="Zipcode">
+    </div>                                    
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="email" class="form-control form-control-user" id="contact_email_address" name="contact_email_address" placeholder="Contact Email Address">
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user" id="contact_mobile_number" name="contact_mobile_number" placeholder="Contact Mobile Number">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        Edit Donor
+    </button>
+    <hr>
+</form>
+{% endblock %}
+
+{% block js %}
+<script>
+document.getElementById('full_name').value = "{{profile.full_name}}";
+document.getElementById('gender').value = "{{profile.gender}}";
+document.getElementById('dob').value = "{{profile.dob}}";
+document.getElementById('blood_group').value = "{{profile.blood_group}}";
+document.getElementById('address').value = "{{profile.address}}";
+document.getElementById('area').value = "{{profile.area}}";
+document.getElementById('city').value = "{{profile.city}}";
+document.getElementById('state').value = "{{profile.state}}";
+document.getElementById('country').value = "{{profile.country}}";
+document.getElementById('zipcode').value = "{{profile.zipcode}}";
+document.getElementById('contact_email_address').value = "{{profile.contact_email_address}}";
+document.getElementById('contact_mobile_number').value = "{{profile.contact_mobile_number}}";
+</script>
+{% endblock %}

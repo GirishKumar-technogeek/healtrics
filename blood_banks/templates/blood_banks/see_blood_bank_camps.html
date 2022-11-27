@@ -1,0 +1,43 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+{% block css %}
+{% endblock %}
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'organize_camp' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Organize Camp</a>
+</div>
+    {% for camp in blood_camps %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card shadow mb-4">
+                <div class="card-header py-4">
+                    <h6 class="m-0 font-weight-bold text-primary">{{camp.camp_description}}</h6>
+                </div>
+                <div class="card-body">
+                    <p>Camp Id : {{camp.camp_id}}</p>
+                    <p>Camp Date : {{camp.camp_date}}</p>
+                    <p>Camp Time : {{camp.camp_time}}</p>
+                    <p>Address : {{camp.address}}</p>
+                    <p>Address : {{camp.area}}</p>
+                    <p>{{camp.city}} {{camp.state}} {{camp.country}} {{camp.zipcode}}</p>
+                    <p>Distance : {{}}</p>
+                    <p>Contact email : {{camp.contact_email_address}}</p>
+                    <p>Contact number : {{camp.contact_mobile_number}}</p>
+                    <p>Team size : {{camp.team_size}}</p>
+                    <p><a href="{{camp.camp_brochure.url}}" target="_blank">Camp Brochure</a></p>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <a href="{% url 'view_camp_enrollments' camp_id=camp.camp_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Camp Enrollments</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}

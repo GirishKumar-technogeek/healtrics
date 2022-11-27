@@ -1,0 +1,65 @@
+{% extends 'blood_banks/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Add BloodBank Profile</h1>
+</div>
+<form class="user" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="blood_bank_name" placeholder="BloodBank Name">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="address" placeholder="Address">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="area" placeholder="Area">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="city" placeholder="City">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="state" placeholder="State">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="country" placeholder="Country">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="zipcode" placeholder="Zipcode">
+    </div>                                    
+    <div class="form-group row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+            <input type="email" class="form-control form-control-user" name="contact_email_address" placeholder="Contact Email Address">
+        </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control form-control-user" name="contact_mobile_number" placeholder="Contact Mobile Number">
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control form-control-user" name="website_url" placeholder="Website Url">
+    </div>
+    <div class="form-group">
+        Logo:<span style="display:inline-block; width:160px;"></span><input type="file" name="logo">                                   
+    </div>
+    Certificates<hr>
+    <div class="form-group">    
+        Bloodbank Operating License:<span style="display:inline-block; width:35px;"></span>  <input type="file" name="bloodbank_operating_license_certificate">                                    
+    </div> 
+    <div class="form-group">    
+        Certificate Of Accreditation:<span style="display:inline-block;"></span>   <input type="file" name="certificate_of_accreditation">                                    
+    </div> 
+    <button type="submit" class="btn btn-primary btn-user btn-block">
+        Add Blood Bank
+    </button>
+    <hr>
+</form>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

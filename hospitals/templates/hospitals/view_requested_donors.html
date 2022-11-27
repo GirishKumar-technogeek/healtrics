@@ -1,0 +1,50 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+    {% for brd in blood_request_donors %}
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6>Request Id - {{brd.blood_request.request_id}} {{brd.blood_request.request_date_time}}</h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">Donation Type Needed : {{brd.blood_request.donation_type_needed}}</div>
+                    <div class="col-md-4">Blood Type Needed : {{brd.blood_request.blood_type_needed}}</div>
+                    <div class="col-md-4">Quantity Needed : {{brd.blood_request.quantity_needed}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">Request Description : {{brd.blood_request.request_description}}</div>
+                    <div class="col-md-4">Donation Uses : {{brd.blood_request.donation_uses}}</div>
+                    <div class="col-md-4">Approx Time For Donation : {{brd.blood_request.approx_time_for_donating}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3" style="max-width: 100%;">
+            <div class="card-body">
+                <h5>{{brd.donor_profile.full_name}}</h5>
+                <p class="card-text">{{brd.donor_profile.dob}}</p>
+                <p class="card-text">{{brd.donor_profile.gender}}</p>
+                <p class="card-text">{{brd.donor_profile.blood_group}}</p>
+                <p class="card-text">{{brd.distance}} km</p>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <a href="{% url 'is_suitable_donor' donor_id=brd.donor_profile.user.user_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Is Possible Donor?</a>
+                </div>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <a href="{% url 'sendEmailAlert' donor_id=brd.donor_profile.user.user_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Send Email Alert</a>
+                </div>
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <a href="{% url 'sendSMSAlert' donor_id=brd.donor_profile.user.user_id %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Send SMS Alert</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}   
+
+{% block js %}
+
+{% endblock %}

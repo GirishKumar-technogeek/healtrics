@@ -1,0 +1,114 @@
+{% extends 'donors/layout.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'see_camps_donors' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> See Blood Camps</a>
+</div>
+
+    {% for camp_enrollment in blood_camp_enrollments %}
+        
+        {% if camp_enrollment.camp_enrollment_status == 'Enrolled' %}
+        <nav>
+            <div class="nav nav-tabs" role="tablist">
+              <a class="nav-item nav-link active" id="nav-camp-tab-{{camp_enrollment.enrollment_id}}" data-toggle="tab" href="#nav-camp-{{camp_enrollment.enrollment_id}}" role="tab" aria-controls="nav-camp-{{camp_enrollment.enrollment_id}}" aria-selected="true">Camp Info</a>
+              <a class="nav-item nav-link" id="nav-enrolled-tab-{{camp_enrollment.enrollment_id}}" data-toggle="tab" href="#nav-enrolled-{{camp_enrollment.enrollment_id}}" role="tab" aria-controls="nav-enrolled-{{camp_enrollment.enrollment_id}}" aria-selected="false">Enrolled Info</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-camp-{{camp_enrollment.enrollment_id}}" role="tabpanel" aria-labelledby="nav-camp-tab-{{camp_enrollment.enrollment_id}}">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-4">
+                            <h6>{{camp_enrollment.blood_camp.camp_description}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Camp Id : {{camp_enrollment.blood_camp.camp_id}}</p>
+                            <p>Camp Date : {{camp_enrollment.blood_camp.camp_date}}</p>
+                            <p>Camp Time : {{camp_enrollment.blood_camp.camp_time}}</p>
+                            <p>Address : {{camp_enrollment.blood_camp.address}}</p>
+                            <p>Area : {{camp_enrollment.blood_camp.area}}</p>
+                            <p>{{camp_enrollment.blood_camp.city}} {{camp_enrollment.blood_camp.state}} {{camp_enrollment.blood_camp.country}} {{camp_enrollment.blood_camp.zipcode}}</p>
+                            <p>Contact email : {{camp_enrollment.blood_camp.contact_email_address}}</p>
+                            <p>Contact number : {{camp_enrollment.blood_camp.contact_mobile_number}}</p>
+                            <p>Team size : {{camp_enrollment.blood_camp.team_size}}</p>
+                            <p><a href="{{camp_enrollment.blood_camp.camp_brochure.url}}" target="_blank">Camp Brochure</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-enrolled-{{camp_enrollment.enrollment_id}}" role="tabpanel" aria-labelledby="nav-enrolled-tab-{{camp_enrollment.enrollment_id}}">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6>Enrollment Id - {{camp_enrollment.enrollment_id}}</h6>
+                </div>
+                <div class="card-body">
+                    Enrolled Date Time : {{camp_enrollment.enrolled_date_time}}
+                    Status : {{camp_enrollment.camp_enrollment_status}}
+                </div>
+            </div>
+        </div>
+        </div>
+        {% else %}
+        <nav>
+            <div class="nav nav-tabs" role="tablist">
+              <a class="nav-item nav-link active" id="nav-camp-tab-{{camp_enrollment.enrollment_id}}" data-toggle="tab" href="#nav-camp-{{camp_enrollment.enrollment_id}}" role="tab" aria-controls="nav-camp-{{camp_enrollment.enrollment_id}}" aria-selected="true">Camp Info</a>
+              <a class="nav-item nav-link" id="nav-enrolled-tab-{{camp_enrollment.enrollment_id}}" data-toggle="tab" href="#nav-enrolled-{{camp_enrollment.enrollment_id}}" role="tab" aria-controls="nav-enrolled-{{camp_enrollment.enrollment_id}}" aria-selected="false">Donated Info</a>
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-camp-{{camp_enrollment.enrollment_id}}" role="tabpanel" aria-labelledby="nav-camp-tab-{{camp_enrollment.enrollment_id}}">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-4">
+                            <h6>{{camp_enrollment.blood_camp.camp_description}}</h6>
+                        </div>
+                        <div class="card-body">
+                            <p>Camp Id : {{camp_enrollment.blood_camp.camp_id}}</p>
+                            <p>Camp Date : {{camp_enrollment.blood_camp.camp_date}}</p>
+                            <p>Camp Time : {{camp_enrollment.blood_camp.camp_time}}</p>
+                            <p>Address : {{camp_enrollment.blood_camp.address}}</p>
+                            <p>{{camp_enrollment.blood_camp.city}} {{camp_enrollment.blood_camp.state}} {{camp_enrollment.blood_camp.country}} {{camp_enrollment.blood_camp.zipcode}}</p>
+                            <p>Contact email : {{camp_enrollment.blood_camp.contact_email_address}}</p>
+                            <p>Contact number : {{camp_enrollment.blood_camp.contact_mobile_number}}</p>
+                            <p>Team size : {{camp_enrollment.blood_camp.team_size}}</p>
+                            <p><a href="{{camp_enrollment.blood_camp.camp_brochure.url}}" target="_blank">Camp Brochure</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-enrolled-{{camp_enrollment.enrollment_id}}" role="tabpanel" aria-labelledby="nav-enrolled-tab-{{camp_enrollment.enrollment_id}}">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6>Enrollment Id - {{camp_enrollment.enrollment_id}}</h6>
+                </div>
+                <div class="card-body">
+                    Enrolled Date Time : {{camp_enrollment.enrolled_date_time}}
+                    Status : {{camp_enrollment.camp_enrollment_status}}
+                    Donated Date Time : {{camp_enrollment.donation_date_time}}
+                    Blood Group Collected : {{camp_enrollment.blood_group_collected}}
+                    Collected Quantity : {{camp_enrollment.collected_quantity_in_cc}}
+                </div>
+            </div>
+        </div>
+        </div>
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

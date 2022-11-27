@@ -1,0 +1,40 @@
+{% extends 'hospitals/layout.html' %}
+{% load static %}
+
+{% block css %}
+
+{% endblock %}   
+
+{% block main %}
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <a href="{% url 'edit_hospital_profile' %}" class="d-sm-inline-block btn btn-sm btn-primary shadow-sm"> Edit Profile</a>
+</div>
+<div class="card mb-3" style="max-width: 100%;">
+    <div class="row no-gutters">
+        <div class="col-md-4">
+            <img src="{{hospital.logo.url}}" width="350px">
+        </div>
+        <div class="col-md-8">
+        <div class="card-body">
+            <h5>{{hospital.hospital_name}}</h5>
+            <p class="card-text">{{hospital.address}}</p>
+            <p class="card-text">{{hospital.area}}</p>
+            <p class="card-text">{{hospital.city}}</p>
+            <p class="card-text">{{hospital.state}} {{hospital.country}} {{hospital.zipcode}}</p>
+        <p class="card-text">{{hospital.contact_email_address}}<br>{{hospital.contact_mobile_number}}</p>
+        <p class="card-text">{{hospital.website_url}}</p>
+        {% if hospital.is_hospital_verified %}
+        <p class="card-text">Hospital Verified!!!</p>
+        {% else %}  
+        <p class="card-text">Hospital Not Verified!!!</p>
+        {% endif %}
+        </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}
